@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<style type="text/css">
+	
+h1{
+
+text-align: center;
+padding: 30px;
+color: white;
+text-shadow: 3px 2px black;
+    font-family: impact;
+
+}
+body{
+	text-align: center;
+	list-style-position: inside;
+	background-image: url("https://th.bing.com/th/id/R.d2edb29f3f970c36aadecbb01ed0bb79?rik=z%2bAuuobpN0KNSg&riu=http%3a%2f%2fisquad.tv%2fwp-content%2fuploads%2f2018%2f08%2fNetflix-Background.jpg&ehk=Ij4PSd%2bZkTcESSlAVWoGpNmExM0fu3BgteNT6AnS9lM%3d&risl=&pid=ImgRaw&r=0");
+	color: white;
+	text-shadow: 3px 2px black;
+}
+table{
+	margin-left:auto; 
+    margin-right:auto;
+    color:white;
+    text-shadow: 3px 2px black;
+    padding: 10px;
+}
+th, td {
+  padding: 15px;
+}
+p, a{
+	text-shadow: none;
+}
+	
+</style>
+{% block title %}
+<h1>Login Here</h1>
+{% endblock %}
+
+{% block content %}
+<form method="POST" class="form-group "autocomplete="off">
+	{% csrf_token %}
+	<table>
+	{{form}}
+	</table>
+	
+	<p>Don't have an account? Create one <a href="/register">here</a></p>
+	<p>Forgot your password? Click <a href="/password_reset">here</a></p>
+	<button type="submit" class="btn btn-success">Login</button>
+
+</form>
+{% endblock %}
