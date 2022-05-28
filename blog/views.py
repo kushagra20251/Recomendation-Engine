@@ -182,40 +182,7 @@ def post_list(request):
         else:
             new_data8 = data[data.title == movie_name]
 
-        new_data1=new_data1['overview'].values[0]
-        if(len(new_data1)>100):
-            new_data1=new_data1[0:99]+"..."
-        
-        new_data2=new_data2['overview'].values[0]
-        if(len(new_data2)>100):
-            new_data1=new_data2[0:99]+"..."
-
-        new_data3=new_data3['overview'].values[0]
-        if(len(new_data3)>100):
-            new_data3=new_data3[0:99]+"..."
-
-        new_data4=new_data4['overview'].values[0]
-        if(len(new_data4)>100):
-            new_data1=new_data4[0:99]+"..."
-        
-        new_data5=new_data5['overview'].values[0]
-        if(len(new_data5)>100):
-            new_data5=new_data5[0:99]+"..."
-        
-        new_data6=new_data6['overview'].values[0]
-        if(len(new_data6)>100):
-            new_data6=new_data6[0:99]+"..."
-        
-        new_data7=new_data7['overview'].values[0]
-        if(len(new_data7)>100):
-            new_data7=new_data7[0:99]+"..."
-        
-        new_data8=new_data8['overview'].values[0]
-        if(len(new_data8)>100):
-            new_data8=new_data8[0:99]+"..."
-        return render(request,'blog/index.html',context = {'movie1': movies[0],"overview1":new_data1,
-        "overview2":new_data2,"overview3":new_data3,"overview4":new_data4,'overview5':new_data5,"overview6":new_data6,
-        "overview7":new_data7,"overview8":new_data8, 'movie2': movies[1], 'movie3': movies[2]
+        return render(request,'blog/index.html',context = {'movie1': movies[0], 'movie2': movies[1], 'movie3': movies[2]
             , 'movie4': movies[3], 'movie5': movies[4], 'movie6': movies[5], 'movie7': movies[6], 'movie8': movies[7],
                                   'link1':link1,'link2':link2,'link3':link3,'link4':link4,'link5':link5,'link6':link6,
                                   'link7': link7,'link8':link8 , 'yesno_movie1' : yesno_list[0],

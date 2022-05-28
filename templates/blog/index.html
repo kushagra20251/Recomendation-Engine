@@ -189,12 +189,6 @@ a:hover {
     background-size: cover;
 }
 
-
-
-/* .header-icon-container {
-  position: relative;
-} */
-
 .header-icon {
   width: 100%;
   height: 367px;
@@ -300,7 +294,6 @@ a:hover {
     margin-top: 40px;
     top: 50; */
     left: 40%;
-    /* display: flex; */
     background: #2f3640;
     height: 60px;
     border-radius: 40px;
@@ -382,20 +375,6 @@ h1{
 
 }
 
-table{
-    text-align: center;
-    width: 100%;
-    height: 180px;
-    border: none;
-}
-
-td{
-    text-align: center;
-    align-items: center;
-    /* justify-content: center; */
-    /* vertical-align: top; */
-}
-
 .header {
     background-color: rgba(0, 0, 0, 0.5);
     padding-bottom: 20px;
@@ -467,19 +446,6 @@ input:checked ~ .container {
 input:checked ~ nav {
     left: 0;
 }
-
-/* .side {
-    right: 0px;
-    background-color: black;
-    width: 250px;
-    position: absolute;
-    height: 1200px;
-    color:white;
-    display: block;
-    padding: 10px;
-    overflow:hidden;
-} */
-
 nav {
     z-index: 2;
     position: relative;
@@ -690,7 +656,7 @@ var cat = 0;
 
         });
              if('{{ movies_number }}' >= 8 ){
-                 console.log("ok")
+                 
                  $.get('{% url 'new_recommend' %}' , {csrfmiddlewaretoken: '{{ csrf_token }}'}).done(function(data){
                  $("#rec_movie1").val(data.recom_movie1);
                  $("#rec_movie11").text("(Because you liked:"+data.byw1+")");
@@ -721,19 +687,16 @@ var cat = 0;
     function getmovienames() {
         
         $.get('{% url 'getmoviename' %}' , {text:'' , csrfmiddlewaretoken: '{{ csrf_token }}'}).done(function(data){
-            console.log(data)
             availableTags=data.flag
-            console.log(availableTags)
             $( function() {
                 $( "#movie_name" ).autocomplete({
                 source: availableTags,
                 select: function( event, ui ) {
-                    console.log( "Selected: " + ui.item.value + " aka " + ui.item.id );
                     $("#movie_name").text(ui.item.value);
                     searchMovie()
                 },
                 },()=>{
-                console.log(availableTags)
+                
                 });
             } );
         });
@@ -741,7 +704,6 @@ var cat = 0;
 
     
     function searchMovie() {
-        console.log("rr")
         var movie = $("#movie_name").val();
         $.get('{% url 'recommend' %}' , {movie_name:movie , csrfmiddlewaretoken: '{{ csrf_token }}'}).done(function(data){
 
@@ -809,11 +771,6 @@ var cat = 0;
             if(data.yesno_movie8 == 1){
                 $("#movie8").parent().find("i").css("background-color", "red");
             }
-
-
-
-
-
         });
     }
 
@@ -829,8 +786,6 @@ var cat = 0;
                 $(movie_id).parent().find("i").css("background-color", "red");
             }
         });
-
-
     }
     
 
@@ -1637,15 +1592,16 @@ var cat = 0;
 
         <div class="movie-card">
             <div class="movie-header" id = "bgImage2">
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style=" height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie2" value="{{ movie2 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie2">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up" onclick="like_button('#movie2')" ></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie2')" ></i>
                         {% endif %}
                     </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
@@ -1676,15 +1632,16 @@ var cat = 0;
 
         <div class="movie-card">
             <div class="movie-header" id = "bgImage3">
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style=" height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie3" value="{{ movie3 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie3">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up"  onclick="like_button('#movie3')"></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie3')" ></i>
                         {% endif %}
-                </form>
+                    </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
@@ -1715,19 +1672,21 @@ var cat = 0;
 
         <div class="movie-card">
             <div class="movie-header" id = "bgImage4">
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style=" height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie4" value="{{ movie4 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie4">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up"  onclick="like_button('#movie4')"></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie4')" ></i>
                         {% endif %}
-                </form>
+                    </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
                 <div class="movie-content-header">
+
 
                 </div>
                 <div class="movie-info">
@@ -1750,19 +1709,19 @@ var cat = 0;
                 </div>
             </div><!--movie-content-->
         </div><!--movie-card-->
-
 
         <div class="movie-card">
             <div class="movie-header" id = "bgImage5">
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style=" height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie5" value="{{ movie5 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie5">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up"  onclick="like_button('#movie5')"></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie5')" ></i>
                         {% endif %}
-                </form>
+                    </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
@@ -1790,19 +1749,19 @@ var cat = 0;
                 </div>
             </div><!--movie-content-->
         </div><!--movie-card-->
-
 
         <div class="movie-card">
             <div class="movie-header" id = "bgImage6">
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style=" height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie6" value="{{ movie6 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie6">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up"  onclick="like_button('#movie6')"></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie6')" ></i>
                         {% endif %}
-                </form>
+                    </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
@@ -1830,18 +1789,18 @@ var cat = 0;
                 </div>
             </div><!--movie-content-->
         </div><!--movie-card-->
-
         <div class="movie-card">
             <div class="movie-header" id = "bgImage7">
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style=" height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie7" value="{{ movie7 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie7">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up"  onclick="like_button('#movie7')"></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie7')" ></i>
                         {% endif %}
-                </form>
+                    </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
@@ -1871,20 +1830,22 @@ var cat = 0;
         </div><!--movie-card-->
 
         <div class="movie-card">
-            <div class="movie-header" id = "bgImage8" >
-                <form action="{% url 'movie_page' %}" style="color: black;" method="post">
+            <div class="movie-header" id = "bgImage8">
+                    <form action="{% url 'movie_page' %}" method="post">
                         {% csrf_token %}
                         <input type="submit"  class="submit_movie" style="color:transparent;background-color: transparent;border: none">
-                        <input type="text"style="text-overflow: ellipsis; height : 80px;background-color:transparent;border:none"  name="movie_text" id="movie8" value="{{ movie8 }}">
+                        <input type="text"style="color:black;text-overflow: ellipsis;height:80px;text-align:center;background-color:transparent;border:none;font-weight: bold;overflow-wrap:break-word "  name="movie_text" id="movie8">
                         {% if user.is_authenticated %}
-                        <i class="fa fa-thumbs-up"  onclick="like_button('#movie8')"></i>
+                        <i class="btn btn-primary  fa fa-thumbs-up cursor-pointer text-xl" onclick="like_button('#movie8')" ></i>
                         {% endif %}
-                </form>
+                    </form>
                 <div class="header-icon-container">
+
                 </div>
             </div><!--movie-header-->
             <div class="movie-content">
                 <div class="movie-content-header">
+
 
                 </div>
                 <div class="movie-info">
@@ -1909,8 +1870,6 @@ var cat = 0;
         </div><!--movie-card-->
 
     </div>
-
-<!-- ye wala ho gaya, isko copy krna hai -->
 
         {% if user.is_authenticated %}
             
