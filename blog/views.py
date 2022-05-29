@@ -1,4 +1,4 @@
-from ast import pattern
+# from ast import pattern
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from django.http import JsonResponse
 
