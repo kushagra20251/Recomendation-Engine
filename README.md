@@ -12,11 +12,12 @@ The aim of this project is to develop a system that can offer movie advice to pe
 
 ## Features
 1. Giving recomendations based on user likings.
-2. Movie descriptions.
+2. Movie descriptions and rating button.
 3. Search with autocomplete.
 4. Storing the liked movies of user.
 5. Responsive UI.
-6. User friendly forgot password features.
+6. forgot password feature is also given that sends mail to recover account.
+7. randomise button to give 8 random movies which is liked by many users in database
 
 ## Website
  Link - `https://recomendation.herokuapp.com/blog`
